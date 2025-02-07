@@ -36,9 +36,8 @@ fun Task4() {
     fun Task7() {
         val context = LocalContext.current
         var stroke by remember { mutableStateOf("321test123") }
-        var char = ""
-        var old by remember { mutableStateOf("") }
         var result by remember { mutableStateOf("") }
+        var count by remember { mutableStateOf("") }
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
             Column(
                 modifier = Modifier
@@ -48,30 +47,20 @@ fun Task4() {
                 verticalArrangement = Arrangement.Center
             )
             {
-                Text("Задание номер 8")
-                Text("Начальная строка: $stroke")
-                Text("Введите индекс элемента ")
-                TextField(
-                    value = old,
-                    onValueChange = { newText ->
-                        if (newText.length < 2) {
-                            old = newText
-                            char = old
-                        }
-                    },
-                )
-                Text("Введите элемент для замены")
+
                 TextField(
                     value = result,
                     onValueChange = { newText ->
                         if (newText.length < 2) {
                             result = newText
-                            stroke = stroke.replaceRange(char.toInt(), char.toInt() + 1, result)
+                            result = stroke.replace(Regex("[0-9]")," ")
+                            count = result.count { it.isLetter() }.toString();
                         }
                     },
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text("Измененная строка: $stroke")
+                Text("Количество букв в строке: $count")
             }
         }
     }}
