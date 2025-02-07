@@ -27,8 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 
-//Вычислить сумму квадратов числа от 1 до N, где N - введенное число пользователя
-//8 задание
+//Вычисить сумму квадратов числа от 1 до N, где N - введенное число пользователя
+//дз
 @Preview
 @Composable
 fun Task4() {
